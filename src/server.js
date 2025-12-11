@@ -1,12 +1,18 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
-
 const PORT = 6767;
 
-app.get("/", (req, res) => {
- res.send("Hello, MIREA! 67!");
-});
+// Middleware для парсинга JSON
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Раздача статических файлов
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Маршруты логируются ВСЕ запросы
+app.use(logger);
 
 // Старт сервера
 app.listen(PORT, () => {
