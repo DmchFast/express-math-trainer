@@ -34,7 +34,7 @@ npm run dev
 
 ### 🌐 Открыть в браузере
 
-http://localhost:6700
+http://localhost:6767
 
 ---
 
