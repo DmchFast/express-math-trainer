@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Математический тренажёр</title>
+    <title>math-simulator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,24 +12,26 @@
         
         <!-- Настройки (query-параметры) -->
         <div class="settings">
-            <h3>Настройки:</h3>
+            <h3>Настройки сложности:</h3>
             <div class="setting-row">
-                <label>Максимум:</label>
+                <label>Максимальное число:</label>
                 <select id="maxSelect" onchange="updateSettings()">
-                    <option value="20" selected>20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
+                    <option value="20" selected>20 (легко)</option>
+                    <option value="50">50 (средне)</option>
+                    <option value="100">100 (сложно)</option>
                 </select>
             </div>
             <div class="setting-row">
                 <label>Операция:</label>
                 <select id="operationSelect" onchange="updateSettings()">
-                    <option value="+" selected>+</option>
-					<option value="-">-</option>
+                    <option value="+" selected>Сложение (+)</option>
+                    <option value="-">Вычитание (-)</option>
+                    <option value="*">Умножение (×)</option>
+                    <option value="/">Деление (÷)</option>
                 </select>
             </div>
         </div>
-
+        
         <div class="stats">
             <h3>Статистика: <span id="score">0</span> из <span id="total">0</span></h3>
             <p id="percentage">Процент правильных: 0%</p>
@@ -39,20 +41,30 @@
             <h2>Решите пример:</h2>
             <div class="numbers">
                 <span id="num1">0</span>
-                <span> + </span>
+                <span id="operator"> + </span>
                 <span id="num2">0</span>
                 <span> = </span>
-                <input type="number" id="answerInput" autofocus>
+                <input 
+                    type="number" 
+                    id="answerInput" 
+                    placeholder=""
+                    step="0.01"
+                    autofocus
+                >
             </div>
         </div>
 
         <div class="controls">
-            <button onclick="checkAnswer()">Проверить</button>
-            <button onclick="generateProblem()">Новая задача</button>
-            <button onclick="resetStats()">Начать заново</button>
+            <button class="answer" onclick="checkAnswer()">Проверить</button>
+            <button class="skip" onclick="generateProblem()">Пропустить</button>
+            <button class="again" onclick="resetStats()">Начать заново</button>
         </div>
 
-        <div id="message"></div>
+        <div id="message" class="message"></div>
+        
+        <div class="api-info">
+            <p>Текущий запрос API: <code id="apiUrl">/api/math/generate?max=50&operation=+</code></p>
+        </div>
     </div>
 
     <script src="script.js"></script>

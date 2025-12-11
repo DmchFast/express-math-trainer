@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 // Раздача статических файлов
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Маршруты логируются ВСЕ запросы
+// Маршруты
 app.use('/api/math', mathRoutes);
 
 // Старт сервера
