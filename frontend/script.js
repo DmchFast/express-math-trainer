@@ -2,9 +2,20 @@
 let currentProblem = {};
 let score = 0;
 let total = 0;
+let currentMax = 50;
+let currentOperation = '+';
+
+// Обновление настроек
+function updateSettings() {
+    currentMax = document.getElementById('maxSelect').value;
+    currentOperation = document.getElementById('operationSelect').value;
+    resetStats();
+}
 
 async function generateProblem() {
-    const response = await fetch('/api/math/generate');
+    const apiUrl = `/api/math/generate?max=${currentMax}&operation=${currentOperation}`;
+    
+    const response = await fetch(apiUrl);
     const data = await response.json();
     currentProblem = data;
     

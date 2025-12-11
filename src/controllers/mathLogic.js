@@ -1,14 +1,26 @@
 const generateProblem = (req, res) => {
+	    // QUERY-ПАРАМЕТРЫ
+    const max = parseInt(req.query.max) || 50;
+	const operation = req.query.operation || '+';
+	
     // Генерация чисел в диапазоне
     const a = Math.floor(Math.random() * max) + 1;
     const b = Math.floor(Math.random() * max) + 1;
-	const answer = a + b;
 	
+	let answer;
+    switch(operation) {
+        case '+': answer = a + b; break;
+        case '-': answer = a - b; break;
+        default: answer = a + b;
+    }
+
     res.json({
         num1: a,
         num2: b,
-        problem: `${a} + ${b}`,
-        correctAnswer: answer
+        problem: `${a} ${operation} ${b}`,
+        correctAnswer: answer,
+        max: max,
+        operation: operation
     });
 };
 
