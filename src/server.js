@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const mathRoutes = require('./routes/mathRoutes');
 
 const app = express();
 const PORT = 6767;
@@ -12,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Маршруты логируются ВСЕ запросы
-app.use(logger);
+app.use('/api/math', mathRoutes);
 
 // Старт сервера
 app.listen(PORT, () => {

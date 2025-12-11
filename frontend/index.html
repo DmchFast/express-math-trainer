@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математический тренажёр</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="math-trainer">
+        <h1>Математический тренажёр</h1>
+        
+        <div class="stats">
+            <h3>Статистика: <span id="score">0</span> из <span id="total">0</span></h3>
+            <p id="percentage">Процент правильных: 0%</p>
+        </div>
+
+        <div class="problem">
+            <h2>Решите пример:</h2>
+            <div class="numbers">
+                <span id="num1">0</span>
+                <span> + </span>
+                <span id="num2">0</span>
+                <span> = </span>
+                <input type="number" id="answerInput" autofocus>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="checkAnswer()">Проверить</button>
+            <button onclick="generateProblem()">Новая задача</button>
+            <button onclick="resetStats()">Начать заново</button>
+        </div>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
